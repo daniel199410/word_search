@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 public class DocxReader {
     private final String searchText;
@@ -30,11 +31,11 @@ public class DocxReader {
     public void createFile(String path) {
         final File folder = new File(path);
         try {
-            writer = new FileWriter(String.format("%s.txt", new Date()));
+            writer = new FileWriter(String.format("%s.txt", UUID.randomUUID()));
             getFiles(folder);
             writer.close();
         } catch (IOException e) {
-            System.out.println("No se pudo crear el archivo");
+            System.out.println(e.getMessage());
         }
     }
 
